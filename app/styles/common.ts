@@ -1,3 +1,5 @@
+import {StyleSheet} from 'react-native';
+
 export const COLORS = {
   white: '#ffffff',
   snow: '#fffafa',
@@ -12,3 +14,14 @@ export const COLORS = {
   midnightblue: '#191970',
   black: '#000000',
 };
+
+export const STYLES = StyleSheet.create({
+  app: {
+    flex: 1,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    backgroundColor: COLORS.snow,
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+  },
+});

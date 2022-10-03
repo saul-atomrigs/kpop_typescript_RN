@@ -86,4 +86,7 @@ const screenOptions = ({route}) => ({
   },
   tabBarStyle: {position: 'absolute'},
   tabBarLabelPosition: 'below-icon',
+  headerStyle: {
+    backgroundColor: COLORS.snow,
+  },
 });

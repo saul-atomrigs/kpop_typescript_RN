@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 
 export const COLORS = {
   white: '#ffffff',
@@ -14,6 +14,9 @@ export const COLORS = {
   midnightblue: '#191970',
   black: '#000000',
 };
+
+export const WIDTH = Dimensions.get('window').width;
+export const HEIGHT = Dimensions.get('window').height;
 
 export const STYLES = StyleSheet.create({
   app: {

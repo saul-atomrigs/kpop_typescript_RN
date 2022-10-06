@@ -61,43 +61,6 @@ export default function Calendar({navigation}: any) {
   const renderItem = (props: any) => {
     return (
       <SafeAreaView style={STYLES.app}>
-        <Agenda
-          items={itemsReduced}
-          dayLoading={false}
-          renderItem={renderItem}
-          renderEmptyData={renderEmptyDate}
-          rowHasChanged={rowHasChanged}
-          showClosingKnob={true}
-          markingType={'custom'}
-          // refreshing={refreshing}
-          // onRefresh={onRefresh}
-          showScrollIndicator={true}
-          theme={{
-            textDayFontWeight: '500',
-            textMonthFontWeight: '500',
-            todayButtonFontWeight: '500',
-            textDayHeaderFontWeight: '500',
-            calendarBackground: '#fff',
-            agendaKnobColor: 'gray',
-            agendaTodayColor: 'blue',
-            dotColor: '#000',
-            textSectionTitleColor: '#000',
-            textSectionTitleDisabledColor: '#d9e1e8',
-            selectedDayBackgroundColor: '#000',
-            selectedDayTextColor: '#ffffff',
-            monthTextColor: 'blue',
-            todayTextColor: 'blue',
-            dayTextColor: '#2d4150',
-            textDisabledColor: '#d9e1e8',
-            selectedDotColor: '#ffffff',
-            'stylesheet.calendar.header': {
-              // marginBottom: 80,
-            },
-          }}
-          // style={styles.container}
-          hideExtraDays={false}
-        />
-
         <TouchableOpacity style={styles.item} onPress={onPressItem}>
           <Text style={styles.artist}>{props.artist}</Text>
           <View style={styles.eventContainer}>
@@ -122,14 +85,53 @@ export default function Calendar({navigation}: any) {
   }, Object.create(null));
 
   return (
-    <View style={styles.floatingBtnContainer}>
-      <TouchableOpacity
-        style={styles.floatingBtn}
-        // onPress={() => navigation.navigate('AddSchedule')}
-      >
-        <Plus color="snow" weight="bold" />
-      </TouchableOpacity>
-    </View>
+    <>
+      <Agenda
+        items={itemsReduced}
+        dayLoading={false}
+        renderItem={renderItem}
+        renderEmptyData={renderEmptyDate}
+        rowHasChanged={rowHasChanged}
+        showClosingKnob={true}
+        markingType={'custom'}
+        // refreshing={refreshing}
+        // onRefresh={onRefresh}
+        showScrollIndicator={true}
+        theme={{
+          textDayFontWeight: '500',
+          textMonthFontWeight: '500',
+          todayButtonFontWeight: '500',
+          textDayHeaderFontWeight: '500',
+          calendarBackground: '#fff',
+          agendaKnobColor: 'gray',
+          agendaTodayColor: 'blue',
+          dotColor: '#000',
+          textSectionTitleColor: '#000',
+          textSectionTitleDisabledColor: '#d9e1e8',
+          selectedDayBackgroundColor: '#000',
+          selectedDayTextColor: '#ffffff',
+          monthTextColor: 'blue',
+          todayTextColor: 'blue',
+          dayTextColor: '#2d4150',
+          textDisabledColor: '#d9e1e8',
+          selectedDotColor: '#ffffff',
+          'stylesheet.calendar.header': {
+            // marginBottom: 80,
+          },
+        }}
+        // style={styles.container}
+        hideExtraDays={false}
+      />
+
+      <View style={styles.floatingBtnContainer}>
+        <TouchableOpacity
+          style={styles.floatingBtn}
+          // onPress={() => navigation.navigate('AddSchedule')}
+        >
+          <Plus color="snow" weight="bold" />
+        </TouchableOpacity>
+      </View>
+    </>
   );
 }
 

@@ -144,7 +144,7 @@ export default function Calendar({navigation}: NavigationPropTypes) {
         onRequestClose={() => {
           setOpenAddScheduleModal(!openAddScheduleModal);
         }}>
-        <AddSchedule />
+        <AddSchedule openAddScheduleModal={openAddScheduleModal} setOpenAddScheduleModal={setOpenAddScheduleModal} />
       </Modal>
     </>
   );

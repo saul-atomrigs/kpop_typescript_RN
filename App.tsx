@@ -10,10 +10,10 @@ import {COLORS} from './app/styles/common';
 /**
  * IMPORT SCREENS:
  */
-import Calendar from './app/components/view/calendar/Calendar';
-import Community from './app/components/view/community/Community';
-import Discover from './app/components/view/discover/Discover';
-import Me from './app/components/view/me/Me';
+import Calendar from './app/components/View/calendar/Calendar';
+import Community from './app/components/View/community/Community';
+import Discover from './app/components/View/discover/Discover';
+import Me from './app/components/View/me/Me';
 
 export type NavigationPropTypes = NativeStackScreenProps<RootStackParamList, 'Calendar', 'Community'>;
 

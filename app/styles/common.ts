@@ -30,6 +30,31 @@ export const commonStyles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 15,
   },
+  bigModalView: {
+    flex: 1,
+    marginTop: 50,
+    borderTopStartRadius: 20,
+    borderTopEndRadius: 20,
+    backgroundColor: COLORS.gainsboro,
+    border: '1px solid black',
+  },
+
+  /**
+   * CONTAINERS:
+   */
+  bodyContainer: {
+    padding: 20,
+  },
+  textInputContainer: {
+    paddingVertical: 15,
+  },
+
+  /**
+   * TEXTS:
+   */
+  bold: {
+    fontWeight: 'bold',
+  },
 
   /**
    * HEADER

@@ -1,17 +1,33 @@
 import React from 'react';
-import {StyleSheet, Text, SafeAreaView, Pressable, View, Image} from 'react-native';
+import {StyleSheet, Text, ScrollView, Pressable, View, Image} from 'react-native';
 
 import {COLORS, commonStyles, WIDTH, HEIGHT} from '../../../styles/common';
+import RegularTextInput from '../../UI/RegularTextInput';
 
-export default function AddSchedule() {
+export default function AddSchedule({openAddScheduleModal, setOpenAddScheduleModal}) {
   return (
-    <SafeAreaView style={commonStyles.app}>
+    <ScrollView style={commonStyles.bigModalView} keyboardShouldPersistTaps="handled">
       <View style={commonStyles.headerContainer}>
-        <Pressable onPress={() => {}}>
+        <Pressable
+          onPress={() => {
+            setOpenAddScheduleModal(!openAddScheduleModal);
+          }}>
           <Image style={commonStyles.closeIcon} source={require('../../../../app/assets/close.png')} />
         </Pressable>
       </View>
-    </SafeAreaView>
+
+      <View style={commonStyles.bodyContainer}>
+        <View style={commonStyles.textInputContainer}>
+          <RegularTextInput title={'Artist'} />
+        </View>
+        <View style={commonStyles.textInputContainer}>
+          <RegularTextInput title={'Date'} />
+        </View>
+        <View style={commonStyles.textInputContainer}>
+          <RegularTextInput title={'Event'} />
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 

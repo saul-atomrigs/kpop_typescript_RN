@@ -3,6 +3,7 @@ import {StatusBar, useColorScheme} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {CalendarPlus, ChatsCircle, Compass, User} from 'phosphor-react-native';
 import {COLORS} from './app/styles/common';
 
@@ -13,6 +14,14 @@ import Calendar from './app/components/view/calendar/Calendar';
 import Community from './app/components/view/community/Community';
 import Discover from './app/components/view/discover/Discover';
 import Me from './app/components/view/me/Me';
+
+export type NavigationPropTypes = NativeStackScreenProps<RootStackParamList, 'Calendar', 'Community'>;
+
+type RootStackParamList = {
+  Calendar: undefined;
+  Community: undefined;
+  Discover: undefined;
+};
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();

@@ -18,7 +18,10 @@ export const COLORS = {
 export const WIDTH = Dimensions.get('window').width;
 export const HEIGHT = Dimensions.get('window').height;
 
-export const STYLES = StyleSheet.create({
+export const commonStyles = StyleSheet.create({
+  /**
+   * VIEW
+   */
   app: {
     flex: 1,
     // alignItems: 'center',
@@ -26,5 +29,21 @@ export const STYLES = StyleSheet.create({
     backgroundColor: COLORS.snow,
     paddingHorizontal: 20,
     paddingVertical: 15,
+  },
+
+  /**
+   * HEADER
+   */
+  headerContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    padding: 20,
+    height: 30,
+    width: WIDTH,
+  },
+  closeIcon: {
+    height: 20,
+    width: 20,
   },
 });

@@ -1,17 +1,22 @@
-import {SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Modal, SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Agenda} from 'react-native-calendars';
 import {BellRinging, Plus} from 'phosphor-react-native';
+import {NavigationPropTypes} from '../../../../App';
 
-import {COLORS, STYLES, WIDTH, HEIGHT} from '../../../styles/common';
+import {COLORS, commonStyles, WIDTH, HEIGHT} from '../../../styles/common';
+import AddSchedule from './AddSchedule';
 
 // import Amplify, { API, graphqlOperation } from 'aws-amplify';
 // import config from '../src/aws-exports';
 // import { listEvents } from '../src/graphql/queries';
 
-export default function Calendar({navigation}: any) {
+// type Props = NativeStackScreenProps<RootStackParamList, 'Profile', 'MyStack'>;
+
+export default function Calendar({navigation}: NavigationPropTypes) {
   const [items, setItems] = useState([]);
+  const [openAddScheduleModal, setOpenAddScheduleModal] = useState(false);
 
   const fetchItems = async () => {
     try {
@@ -60,7 +65,7 @@ export default function Calendar({navigation}: any) {
    */
   const renderItem = (props: any) => {
     return (
-      <SafeAreaView style={STYLES.app}>
+      <SafeAreaView style={commonStyles.app}>
         <TouchableOpacity style={styles.item} onPress={onPressItem}>
           <Text style={styles.artist}>{props.artist}</Text>
           <View style={styles.eventContainer}>
@@ -127,10 +132,20 @@ export default function Calendar({navigation}: any) {
         <TouchableOpacity
           style={styles.floatingBtn}
           // onPress={() => navigation.navigate('AddSchedule')}
-        >
+          onPress={() => setOpenAddScheduleModal(!openAddScheduleModal)}>
           <Plus color="snow" weight="bold" />
         </TouchableOpacity>
       </View>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={openAddScheduleModal}
+        onRequestClose={() => {
+          setOpenAddScheduleModal(!openAddScheduleModal);
+        }}>
+        <AddSchedule />
+      </Modal>
     </>
   );
 }

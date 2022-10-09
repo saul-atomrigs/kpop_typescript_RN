@@ -27,9 +27,9 @@ export default function Calendar({navigation}: NavigationPropTypes) {
     }
   };
 
-  useEffect(() => {
-    fetchItems();
-  });
+  // useEffect(() => {
+  //   fetchItems();
+  // });
 
   // Read isEnabled from AsyncStorate
   // const STORAGE_KEY = props.id;

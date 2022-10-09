@@ -1,33 +1,72 @@
-import React from 'react';
-import {StyleSheet, Text, ScrollView, Pressable, View, Image} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, KeyboardAvoidingView, ScrollView, Pressable, View, Image, SafeAreaView, NativeModules, Platform} from 'react-native';
+import {Picker} from '@react-native-picker/picker';
 
 import {COLORS, commonStyles, WIDTH, HEIGHT} from '../../../styles/common';
+import RegularButton from '../../UI/RegularButton';
 import RegularTextInput from '../../UI/RegularTextInput';
 
-export default function AddSchedule({openAddScheduleModal, setOpenAddScheduleModal}) {
-  return (
-    <ScrollView style={commonStyles.bigModalView} keyboardShouldPersistTaps="handled">
-      <View style={commonStyles.headerContainer}>
-        <Pressable
-          onPress={() => {
-            setOpenAddScheduleModal(!openAddScheduleModal);
-          }}>
-          <Image style={commonStyles.closeIcon} source={require('../../../../app/assets/close.png')} />
-        </Pressable>
-      </View>
+const initialValues = {
+  artist: '',
+  date: '',
+  event: '',
+};
 
-      <View style={commonStyles.bodyContainer}>
-        <View style={commonStyles.textInputContainer}>
-          <RegularTextInput title={'Artist'} />
+export default function AddSchedule({openAddScheduleModal, setOpenAddScheduleModal}) {
+  const {StatusBarManager} = NativeModules;
+  let currentDate = new Date().toJSON().slice(0, 10);
+
+  const [statusBarHeight, setStatusBarHeight] = useState(0);
+  const [values, setValues] = useState(initialValues);
+  const [items, setItems] = useState([]);
+  const [datePickerVisible, setDatePickerVisibility] = useState(false);
+  const [text, onChangeText] = useState('');
+  const [selectedLanguage, setSelectedLanguage] = useState('ASTRO');
+
+  useEffect(() => {
+    Platform.OS == 'ios'
+      ? StatusBarManager.getHeight(statusBarFrameData => {
+          setStatusBarHeight(statusBarFrameData.height);
+        })
+      : null;
+  }, []);
+
+  return (
+    <SafeAreaView style={commonStyles.bigModalView}>
+      <KeyboardAvoidingView style={{flex: 1}} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={statusBarHeight + 30}>
+        <View style={commonStyles.headerContainer}>
+          <Pressable
+            onPress={() => {
+              setOpenAddScheduleModal(!openAddScheduleModal);
+            }}>
+            <Image style={commonStyles.closeIcon} source={require('../../../../app/assets/close.png')} />
+          </Pressable>
         </View>
-        <View style={commonStyles.textInputContainer}>
-          <RegularTextInput title={'Date'} />
+
+        <ScrollView keyboardShouldPersistTaps="handled">
+          <View style={commonStyles.bodyContainer}>
+            <View style={commonStyles.textInputContainer}>
+              <RegularTextInput title={'Artist'} placeholder={selectedLanguage} />
+            </View>
+            <View style={commonStyles.textInputContainer}>
+              <RegularTextInput title={'Date'} placeholder={currentDate} />
+            </View>
+            <View style={commonStyles.textInputContainer}>
+              <RegularTextInput title={'Event'} />
+            </View>
+          </View>
+
+          <Picker selectedValue={selectedLanguage} onValueChange={(itemValue, itemIndex) => setSelectedLanguage(itemValue)}>
+            <Picker.Item label="ASTRO" value="ASTRO" />
+            <Picker.Item label="Blackpink" value="Blackpink" />
+          </Picker>
+        </ScrollView>
+
+        <View style={commonStyles.buttonContainer}>
+          <RegularButton text="Next" onPress={() => {}} />
         </View>
-        <View style={commonStyles.textInputContainer}>
-          <RegularTextInput title={'Event'} />
-        </View>
-      </View>
-    </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 

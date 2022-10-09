@@ -31,7 +31,9 @@ export const commonStyles = StyleSheet.create({
     paddingVertical: 15,
   },
   bigModalView: {
+    // display: 'flex',
     flex: 1,
+    // justifyContent: 'space-between',
     marginTop: 50,
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,
@@ -43,10 +45,18 @@ export const commonStyles = StyleSheet.create({
    * CONTAINERS:
    */
   bodyContainer: {
+    display: 'flex',
+    flex: 1,
     padding: 20,
   },
   textInputContainer: {
     paddingVertical: 15,
+  },
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
   },
 
   /**
@@ -54,6 +64,24 @@ export const commonStyles = StyleSheet.create({
    */
   bold: {
     fontWeight: 'bold',
+  },
+  buttonText: {
+    color: COLORS.snow,
+    fontWeight: '800',
+    letterSpacing: 2,
+  },
+
+  /**
+   * BUTTONS:
+   */
+  blackButton: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: COLORS.black,
+    width: '100%',
+    height: HEIGHT * 0.07,
+    borderRadius: 25,
   },
 
   /**

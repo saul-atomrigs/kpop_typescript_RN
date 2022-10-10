@@ -5,6 +5,7 @@ import {Picker} from '@react-native-picker/picker';
 import {COLORS, commonStyles, WIDTH, HEIGHT} from '../../../styles/common';
 import RegularButton from '../../UI/RegularButton';
 import RegularTextInput from '../../UI/RegularTextInput';
+import RegularWheelPicker from '../../UI/RegularWheelPicker';
 
 const initialValues = {
   artist: '',
@@ -46,7 +47,7 @@ export default function AddSchedule({openAddScheduleModal, setOpenAddScheduleMod
         <ScrollView keyboardShouldPersistTaps="handled">
           <View style={commonStyles.bodyContainer}>
             <View style={commonStyles.textInputContainer}>
-              <RegularTextInput title={'Artist'} placeholder={selectedLanguage} />
+              <RegularWheelPicker title={'Artist'} selectedValue={selectedLanguage} onValueChange={(itemValue, itemIndex) => setSelectedLanguage(itemValue)} />
             </View>
             <View style={commonStyles.textInputContainer}>
               <RegularTextInput title={'Date'} placeholder={currentDate} />
@@ -55,11 +56,6 @@ export default function AddSchedule({openAddScheduleModal, setOpenAddScheduleMod
               <RegularTextInput title={'Event'} />
             </View>
           </View>
-
-          <Picker selectedValue={selectedLanguage} onValueChange={(itemValue, itemIndex) => setSelectedLanguage(itemValue)}>
-            <Picker.Item label="ASTRO" value="ASTRO" />
-            <Picker.Item label="Blackpink" value="Blackpink" />
-          </Picker>
         </ScrollView>
 
         <View style={commonStyles.buttonContainer}>

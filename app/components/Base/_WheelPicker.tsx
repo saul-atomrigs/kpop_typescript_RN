@@ -11,8 +11,8 @@ const artists = ['ASTRO', 'Blackpink'];
 export default function _WheelPicker({selectedValue, onValueChange}: PropTypes) {
   return (
     <Picker selectedValue={selectedValue} onValueChange={onValueChange}>
-      {artists.map(artist => {
-        return <Picker.Item label={artist} value={artist} />;
+      {artists.map((artist, idx) => {
+        return <Picker.Item key={idx} label={artist} value={artist} />;
       })}
       {/* <Picker.Item label="Blackpink" value="Blackpink" /> */}
     </Picker>

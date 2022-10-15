@@ -1,0 +1,158 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+# input AMPLIFY {
+#  globalAuthRule: AuthRule = { allow: public }
+# }
+
+type User
+ @model
+ @auth(
+  rules: [{ allow: public, operations: [read, create] }, { allow: owner }]
+ ) {
+ id: String
+ name: String
+ nickname: String
+ posts: [Post] @hasMany
+ comments: [Comment] @hasMany
+}
+
+type Blog
+ @model
+ @auth(
+  rules: [{ allow: public, operations: [read, create] }, { allow: owner }]
+ ) {
+ id: ID!
+ name: String!
+ posts: [Post] @hasMany
+}
+
+type Post
+ @model
+ #  EVERYONE CAN READ, OWNER CAN CRUD:
+ @auth(
+  rules: [
+   { allow: public, operations: [create, read, update] }
+   {
+    allow: owner
+    provider: oidc
+    identityClaim: "user_id"
+    operations: [create, read, update, delete]
+   }
+  ]
+ ) {
+ blog: Blog @belongsTo
+ user: User @belongsTo
+ id: ID!
+ title: String!
+ #  content: String!
+ userPostId: ID
+ createdAt: AWSDateTime!
+ updatedAt: AWSDateTime!
+ likesCount: Int
+ likesByUserArray: [String]
+ #  likes: [PostLike] @hasMany
+ comments: [Comment] @hasMany
+}
+
+# type PostLike
+#  @model
+#  @auth(
+#   rules: [{ allow: public, operations: [read, create] }, { allow: owner }]
+#  ) {
+#  post: Post @belongsTo
+#  id: ID!
+#  userId: ID!
+#  username: String
+# }
+
+type Comment
+ @model
+ @auth(
+  rules: [{ allow: public, operations: [read, create] }, { allow: owner }]
+ ) {
+ post: Post @belongsTo
+ user: User @belongsTo
+ id: ID!
+ postCommentsId: ID
+ userCommentsId: ID
+ content: String!
+ createdAt: AWSDateTime! #important to keep it to have filter with keys
+ updatedAt: AWSDateTime! #important to keep it to have filter with keys
+}
+
+type Calendar
+ @model
+ @auth(
+  rules: [
+   { allow: public, operations: [create, read, update, delete] }
+   { allow: owner }
+  ]
+ ) {
+ id: ID!
+ name: String!
+ events: [Event] @hasMany
+}
+
+type Event
+ @model
+ @auth(
+  rules: [
+   { allow: public, operations: [create, read, update, delete] }
+   { allow: owner }
+  ]
+ ) {
+ id: ID!
+ event: String!
+ artist: String!
+ date: String!
+}
+
+# type Profile
+#  @model
+#  @auth(rules: [{ allow: owner, provider: oidc, identityClaim: "uid" }]) {
+#  id: ID!
+#  displayNAme: String!
+# }
+
+# type Like @model {
+#  id: ID!
+#  userId: String!
+#  username: String!
+#  picture: Picture @connection(name: "PictureLikes")
+# }
+
+# type Picture @model {
+#  id: ID!
+#  userId: String!
+#  username: String!
+#  file: S3Object
+#  likes: [Like] @connection(name: "PictureLikes")
+# }
+
+# type Subscription {
+#  onCommentByPostId(postCommentsId: ID!): Comment
+#   @aws_subscribe(mutations: ["createComment"])
+# }
+
+# type ChatMessage @model {
+#  id: ID!
+#  senderUserSub: String
+#  receiverUserSub: String
+#  messageText: String
+#  messageImageFilename: String
+#  dateSent: String!
+# }
+
+# type Picture @model {
+#  id: ID!
+#  name: String!
+#  username: String!
+#  file: S3Object
+# }
+
+# type S3Object {
+#  bucket: String!
+#  region: String!
+#  key: String!
+#  uri: String!
+# }

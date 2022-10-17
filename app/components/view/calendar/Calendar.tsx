@@ -8,11 +8,10 @@ import {NavigationPropTypes} from '../../../../App';
 import {COLORS, commonStyles, WIDTH, HEIGHT} from '../../../styles/common';
 import AddSchedule from './AddSchedule';
 
-// import Amplify, { API, graphqlOperation } from 'aws-amplify';
-// import config from '../src/aws-exports';
-// import { listEvents } from '../src/graphql/queries';
+import {API, graphqlOperation} from 'aws-amplify';
+import {listEvents} from '../../../../backend/graphql/queries';
 
-// type Props = NativeStackScreenProps<RootStackParamList, 'Profile', 'MyStack'>;
+type PropsTypes = NativeStackScreenProps<RootStackParamList, 'Profile', 'MyStack'>;
 
 export default function Calendar({navigation}: NavigationPropTypes) {
   const [items, setItems] = useState([]);
@@ -20,16 +19,16 @@ export default function Calendar({navigation}: NavigationPropTypes) {
 
   const fetchItems = async () => {
     try {
-      // const itemData = await API.graphql(graphqlOperation(listEvents))
-      // setItems(itemData.data.listEvents.items)
+      const itemData = await API.graphql(graphqlOperation(listEvents));
+      setItems(itemData.data.listEvents.items);
     } catch (error) {
       console.log('error', error);
     }
   };
 
-  // useEffect(() => {
-  //   fetchItems();
-  // });
+  useEffect(() => {
+    fetchItems();
+  }, []);
 
   // Read isEnabled from AsyncStorate
   // const STORAGE_KEY = props.id;
@@ -54,9 +53,9 @@ export default function Calendar({navigation}: NavigationPropTypes) {
   /**
    * COMPONENTS:
    */
-  function renderEmptyDate() {
+  const renderEmptyDate = () => {
     return <View style={styles.emptyDate}>{/* <Text>Waiting for new activities...</Text> */}</View>;
-  }
+  };
 
   /**
    * Each component in the Agenda
@@ -82,17 +81,26 @@ export default function Calendar({navigation}: NavigationPropTypes) {
     );
   };
 
-  // GROUP MULTIPLE SCHEDULES ON THE SAME DAY & CONVERT TO CALENDAR TYPE OBJECT
-  let itemsReduced = items.reduce(function (r, a) {
-    r[a.date] = r[a.date || []];
-    r[a.date].push(a);
-    return r;
-  }, Object.create(null));
+  /**
+   // GROUP MULTIPLE SCHEDULES ON THE SAME DAY & CONVERT TO CALENDAR TYPE OBJECT
+   * @param objectArray 
+   * @param property 
+   * @returns 
+   */
+  const groupByDate = (objectArray, property) => {
+    return objectArray.reduce((acc, obj) => {
+      const key = obj[property];
+      const curGroup = acc[key] ?? [];
+      return {...acc, [key]: [...curGroup, obj]};
+    }, {});
+  };
+
+  const groupedSchedules = groupByDate(items, 'date');
 
   return (
     <>
       <Agenda
-        items={itemsReduced}
+        items={groupedSchedules}
         dayLoading={false}
         renderItem={renderItem}
         renderEmptyData={renderEmptyDate}
@@ -121,18 +129,15 @@ export default function Calendar({navigation}: NavigationPropTypes) {
           textDisabledColor: '#d9e1e8',
           selectedDotColor: '#ffffff',
           'stylesheet.calendar.header': {
-            // marginBottom: 80,
+            marginBottom: 80,
           },
         }}
-        // style={styles.container}
+        style={styles.container}
         hideExtraDays={false}
       />
 
       <View style={styles.floatingBtnContainer}>
-        <TouchableOpacity
-          style={styles.floatingBtn}
-          // onPress={() => navigation.navigate('AddSchedule')}
-          onPress={() => setOpenAddScheduleModal(!openAddScheduleModal)}>
+        <TouchableOpacity style={styles.floatingBtn} onPress={() => setOpenAddScheduleModal(!openAddScheduleModal)}>
           <Plus color="snow" weight="bold" />
         </TouchableOpacity>
       </View>

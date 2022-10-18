@@ -1,11 +1,14 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {StyleSheet, Text, Pressable} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import Amplify, {API, graphqlOperation} from 'aws-amplify';
+import config from '../../../../backend/aws-exports';
+import {listEvents} from '../../../../backend/graphql/queries';
 
 export default function Community() {
   return (
-    <View>
+    <Pressable>
       <Text>Community</Text>
-    </View>
+    </Pressable>
   );
 }
 

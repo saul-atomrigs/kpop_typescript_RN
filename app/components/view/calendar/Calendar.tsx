@@ -72,7 +72,6 @@ export default function Calendar({navigation}: NavigationPropTypes) {
             <Text style={styles.event}>{props.event}</Text>
           </View>
           <View style={styles.stats}></View>
-          {/* <Divider style={styles.divider} /> */}
           <View style={styles.stats}>
             <BellRinging size={20} />
           </View>

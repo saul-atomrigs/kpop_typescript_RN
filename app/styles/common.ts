@@ -1,4 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import styled from '@emotion/native';
 
 export const COLORS = {
   white: '#ffffff',
@@ -18,22 +19,52 @@ export const COLORS = {
 export const WIDTH = Dimensions.get('window').width;
 export const HEIGHT = Dimensions.get('window').height;
 
+export const App = styled.View`
+  background-color: ${COLORS.snow}
+  padding: 20px
+`;
+
+export const ScrollView = styled.ScrollView`
+  background-color: ${COLORS.snow}
+  padding: 20px
+`;
+
+export const Container = styled.Pressable`
+  display: flex;
+  flex-direction: row;
+  align-items: center
+  background-color: ${COLORS.white};
+  padding: 10px;
+  border-radius: 10px;
+  margin-vertical: 5px
+`;
+
+export const VerticalContainer = styled(Container)`
+  flex-direction: column;
+`;
+
+export const BoldText = styled.Text`
+  font-size: 12px;
+  font-weight: bold;
+`;
+
+export const RegularText = styled.Text`
+  font-size: 12px;
+  font-weight: 500;
+`;
+
 export const commonStyles = StyleSheet.create({
   /**
    * VIEW
    */
   app: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
     backgroundColor: COLORS.snow,
     paddingHorizontal: 20,
     paddingVertical: 15,
   },
   bigModalView: {
-    // display: 'flex',
     flex: 1,
-    // justifyContent: 'space-between',
     marginTop: 50,
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,

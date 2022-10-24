@@ -12,7 +12,9 @@ import {COLORS} from './app/styles/common';
  */
 import Calendar from './app/components/View/calendar/Calendar';
 import Community from './app/components/View/community/Community';
+import FeedPage from './app/components/View/community/FeedPage';
 import Discover from './app/components/View/discover/Discover';
+import Twitter from './app/components/View/discover/Twitter';
 import Me from './app/components/View/me/Me';
 
 export type NavigationPropTypes = NativeStackScreenProps<RootStackParamList, 'Calendar', 'Community'>;
@@ -20,6 +22,7 @@ export type NavigationPropTypes = NativeStackScreenProps<RootStackParamList, 'Ca
 type RootStackParamList = {
   Calendar: undefined;
   Community: undefined;
+  FeedPage: undefined;
   Discover: undefined;
 };
 
@@ -39,7 +42,9 @@ export default function App() {
           <Stack.Screen name="HomeTabNavigation" component={HomeTabNavigation} />
           <Stack.Screen name="Calendar" component={Calendar} />
           <Stack.Screen name="Community" component={Community} />
+          <Stack.Screen name="FeedPage" component={FeedPage} />
           <Stack.Screen name="Discover" component={Discover} />
+          <Stack.Screen name="Twitter" component={Twitter} />
           <Stack.Screen name="Me" component={Me} />
         </Stack.Navigator>
       </NavigationContainer>

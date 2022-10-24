@@ -32,7 +32,7 @@ export const ScrollView = styled.ScrollView`
 export const SafeAreaView = styled.SafeAreaView`
   flex: 1;
   background-color: ${COLORS.snow}
-  padding: 20px;
+  margin: 20px;
 `;
 
 export const Container = styled.Pressable`

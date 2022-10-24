@@ -1,5 +1,5 @@
 export const artists = [
-  '',
+  // '',
   'NewJeans',
   'aespa',
   'Apink',
@@ -243,14 +243,14 @@ export const artistMetaData = {
     twitterID: '1476733619620450304',
   },
 
-  '': {
-    debut: '',
-    members: [],
-    leader: '',
-    label: '',
-    fandom: '',
-    albums: [],
-    twitterIDurl: '',
-    twitterID: '',
-  },
+  // '': {
+  //   debut: '',
+  //   members: [],
+  //   leader: '',
+  //   label: '',
+  //   fandom: '',
+  //   albums: [],
+  //   twitterIDurl: '',
+  //   twitterID: '',
+  // },
 };

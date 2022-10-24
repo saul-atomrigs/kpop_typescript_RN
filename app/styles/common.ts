@@ -29,6 +29,12 @@ export const ScrollView = styled.ScrollView`
   padding: 20px
 `;
 
+export const SafeAreaView = styled.SafeAreaView`
+  flex: 1;
+  background-color: ${COLORS.snow}
+  padding: 20px;
+`;
+
 export const Container = styled.Pressable`
   display: flex;
   flex-direction: row;
@@ -46,11 +52,22 @@ export const VerticalContainer = styled(Container)`
 export const BoldText = styled.Text`
   font-size: 12px;
   font-weight: bold;
+  color: black;
 `;
 
 export const RegularText = styled.Text`
   font-size: 12px;
   font-weight: 500;
+  color: ${COLORS.black};
+`;
+
+export const RegularGrayText = styled(RegularText)`
+  color: ${COLORS.slategray};
+`;
+
+export const ThinText = styled.Text`
+  font-size: 12px;
+  font-weight: 300;
 `;
 
 export const commonStyles = StyleSheet.create({

@@ -1,19 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList} from 'react-native';
 import {useNavigation, useRoute, useIsFocused} from '@react-navigation/native';
+import styled from '@emotion/native';
 
 import {App, SafeAreaView, VerticalContainer, BoldText, RegularText} from '../../../styles/common';
+import Comments from '../../UI/Comments';
 
 import {API, graphqlOperation} from 'aws-amplify';
 import {listComments, getUser} from '../../../../backend/graphql/queries';
 import {createComment, updatePost} from '../../../../backend/graphql/mutations';
-import styled from '@emotion/native';
 
 export default function FeedPage() {
   const {param} = useRoute().params;
 
   const [comments, setComments] = useState([]);
-  console.log(comments);
 
   async function fetchComments() {
     try {
@@ -24,7 +24,6 @@ export default function FeedPage() {
     }
   }
 
-  //   const isFocused = useIsFocused();
   useEffect(() => {
     fetchComments();
   }, []);
@@ -32,12 +31,6 @@ export default function FeedPage() {
   /**
    * COMPONENTS
    */
-
-  const Comments = ({content}) => (
-    <VerticalContainer>
-      <RegularText>{content}</RegularText>
-    </VerticalContainer>
-  );
 
   return (
     <SafeAreaView>

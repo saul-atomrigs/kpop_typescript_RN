@@ -11,9 +11,9 @@ import {listComments, getUser} from '../../../../backend/graphql/queries';
 import {createComment, updatePost} from '../../../../backend/graphql/mutations';
 
 export default function FeedPage() {
-  const {param} = useRoute().params;
+  const {param} = useRoute<any>().params;
 
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<any[]>([]);
 
   async function fetchComments() {
     try {

@@ -14,5 +14,3 @@ export default function Me() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({});

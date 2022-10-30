@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 import styled from '@emotion/native';
 
@@ -25,11 +25,11 @@ export default function Community({navigation}) {
     fetchPosts();
   }, []);
 
-  const titleReduced = title => {
+  const titleReduced = (title: string) => {
     return textReducer(title, 80, true);
   };
 
-  const createdAtReduced = createdAt => {
+  const createdAtReduced = (createdAt: string) => {
     return textReducer(createdAt, 10, false);
   };
 

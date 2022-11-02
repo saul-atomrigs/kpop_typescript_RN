@@ -19,6 +19,9 @@ export const COLORS = {
 export const WIDTH = Dimensions.get('window').width;
 export const HEIGHT = Dimensions.get('window').height;
 
+/**
+ * VIEW & CONTAINERS:
+ */
 export const App = styled.View`
   background-color: ${COLORS.snow}
   padding: 20px
@@ -49,6 +52,9 @@ export const VerticalContainer = styled(Container)`
   flex-direction: column;
 `;
 
+/**
+ * TEXT STYLES:
+ */
 export const BoldText = styled.Text`
   font-size: 12px;
   font-weight: bold;

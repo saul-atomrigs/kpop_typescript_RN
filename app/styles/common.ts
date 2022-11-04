@@ -1,25 +1,23 @@
 import {StyleSheet, Dimensions} from 'react-native';
 import styled from '@emotion/native';
 
-export const COLORS = {
-  white: '#ffffff',
-  snow: '#fffafa',
-  ivory: '#fffff0',
-  floralwhite: '#fffaf0',
-  gainsboro: '#dcdcdc',
-  lightgray: '#d3d3d3',
-  gray: '#808080',
-  slategray: '#708090',
-  salmon: '#fa8072',
-  tomato: '#ff6347',
-  midnightblue: '#191970',
-  black: '#000000',
-};
-
 /**
  * DESIGN TOKENS:
  */
-export const colors = {
+export const COLORS = {
+  background: {
+    50: '#ffffff', // white
+    100: '#fffafa', // snow
+    200: '#fffff0', // ivory
+    300: '#fffaf0', // floralwhite
+    400: '#dcdcdc', // gainsboro
+    500: '#d3d3d3', // lightgray
+  },
+  text: {
+    50: '#808080', // gray
+    100: '#708090', // slategray
+    200: '#000000', // black
+  },
   primary: {
     50: '#ecfeff',
     100: '#cffafe',
@@ -32,8 +30,12 @@ export const colors = {
     800: '#155e75',
     900: '#164e63',
   },
+  error: {
+    50: '#fa8072', // salmon
+    100: '#ff6347', // tomato
+  },
 };
-export const spacing = {
+export const SPACING = {
   px: 1,
   1: 4,
   2: 8,
@@ -66,29 +68,28 @@ export const HEIGHT = Dimensions.get('window').height;
  * VIEW & CONTAINERS:
  */
 export const App = styled.View`
-  background-color: ${COLORS.snow}
-  padding: 20px
+  background-color: ${COLORS.background[400]};
+  padding: 20px;
 `;
 
 export const ScrollView = styled.ScrollView`
-  background-color: ${COLORS.snow}
-  padding: 20px
+  background-color: ${COLORS.background[400]};
+  padding: 20px;
 `;
 
 export const SafeAreaView = styled.SafeAreaView`
   flex: 1;
-  background-color: ${COLORS.snow}
+  background-color: ${COLORS.background[200]};
   margin: 20px;
 `;
 
 export const Container = styled.Pressable`
   display: flex;
   flex-direction: row;
-  align-items: center
-  background-color: ${COLORS.white};
+  background-color: ${COLORS.background[50]};
   padding: 10px;
   border-radius: 10px;
-  margin-vertical: 5px
+  margin-vertical: 5px;
 `;
 
 export const VerticalContainer = styled(Container)`
@@ -101,17 +102,17 @@ export const VerticalContainer = styled(Container)`
 export const BoldText = styled.Text`
   font-size: 12px;
   font-weight: bold;
-  color: black;
+  color: ${COLORS.text[200]};
 `;
 
 export const RegularText = styled.Text`
   font-size: 12px;
   font-weight: 500;
-  color: ${COLORS.black};
+  color: ${COLORS.text[200]};
 `;
 
 export const RegularGrayText = styled(RegularText)`
-  color: ${COLORS.slategray};
+  color: ${COLORS.text[100]};
 `;
 
 export const ThinText = styled.Text`
@@ -125,7 +126,7 @@ export const commonStyles = StyleSheet.create({
    */
   app: {
     flex: 1,
-    backgroundColor: COLORS.snow,
+    backgroundColor: COLORS.background[200],
     paddingHorizontal: 20,
     paddingVertical: 15,
   },
@@ -134,7 +135,7 @@ export const commonStyles = StyleSheet.create({
     marginTop: 50,
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,
-    backgroundColor: COLORS.gainsboro,
+    backgroundColor: COLORS.background[400],
     border: '1px solid black',
   },
 
@@ -163,7 +164,7 @@ export const commonStyles = StyleSheet.create({
     fontWeight: 'bold',
   },
   buttonText: {
-    color: COLORS.snow,
+    color: COLORS.background[200],
     fontWeight: '800',
     letterSpacing: 2,
   },

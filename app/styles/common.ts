@@ -33,6 +33,15 @@ export const COLORS = {
   error: {
     50: '#fa8072', // salmon
     100: '#ff6347', // tomato
+    $red800: '#E81300',
+  },
+  $yellow50: '#FFF7E6',
+  $yellow500: '#FFC552',
+  $yellow800: '#CE6400',
+  success: {
+    50: '#E8FAF6',
+    500: '#00B493',
+    800: '#008C72',
   },
 };
 export const SPACING = {

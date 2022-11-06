@@ -5,9 +5,9 @@ platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 
 # Added 2022.10.25 (Firebase auth) #######
-pod 'Firebase', :modular_headers => true
-pod 'FirebaseCoreInternal', :modular_headers => true
-pod 'GoogleUtilities', :modular_headers => true
+# pod 'Firebase', :modular_headers => true
+# pod 'FirebaseCoreInternal', :modular_headers => true
+# pod 'GoogleUtilities', :modular_headers => true
 ##########################################
 
 target 'KpopTypescriptRN' do

@@ -2,7 +2,8 @@ import React, {useEffect, useMemo, useState} from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 import styled from '@emotion/native';
 
-import {App, ScrollView, VerticalContainer as FeedContainer, BoldText, RegularGrayText} from '../../../styles/common';
+import {App, VStack as FeedContainer, BoldText, RegularGrayText} from '../../../styles/styled';
+import {DIMENSION} from '../../../styles/common';
 
 import {API, graphqlOperation} from 'aws-amplify';
 import {listPosts} from '../../../../backend/graphql/queries';
@@ -66,10 +67,8 @@ export default function Community({navigation}) {
   );
 }
 
-const styles = StyleSheet.create({});
-
 const Footer = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 10px;
+  padding-top: ${DIMENSION.$small};
 `;

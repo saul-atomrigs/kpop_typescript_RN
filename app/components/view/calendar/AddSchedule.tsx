@@ -6,6 +6,7 @@ import {COLORS, commonStyles, WIDTH, HEIGHT} from '../../../styles/common';
 import RegularButton from '../../UI/RegularButton';
 import RegularTextInput from '../../UI/RegularTextInput';
 import RegularWheelPicker from '../../UI/RegularWheelPicker';
+import {FullScreenModalContainer} from '../../../styles/styled';
 
 const initialValues = {
   artist: '',
@@ -33,7 +34,7 @@ export default function AddSchedule({openAddScheduleModal, setOpenAddScheduleMod
   }, []);
 
   return (
-    <SafeAreaView style={commonStyles.bigModalView}>
+    <FullScreenModalContainer>
       <KeyboardAvoidingView style={{flex: 1}} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={statusBarHeight + 30}>
         <View style={commonStyles.headerContainer}>
           <Pressable
@@ -53,7 +54,7 @@ export default function AddSchedule({openAddScheduleModal, setOpenAddScheduleMod
               <RegularTextInput title={'Date'} placeholder={currentDate} />
             </View>
             <View style={commonStyles.textInputContainer}>
-              <RegularTextInput title={'Event'} />
+              <RegularTextInput title={'Event'} placeholder="Write an event" />
             </View>
           </View>
         </ScrollView>
@@ -62,7 +63,7 @@ export default function AddSchedule({openAddScheduleModal, setOpenAddScheduleMod
           <RegularButton text="Next" onPress={() => {}} />
         </View>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </FullScreenModalContainer>
   );
 }
 

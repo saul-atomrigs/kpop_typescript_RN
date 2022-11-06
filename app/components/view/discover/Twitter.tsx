@@ -1,7 +1,7 @@
 import React from 'react';
 import {WebView} from 'react-native-webview';
 import {useRoute} from '@react-navigation/native';
-import {SafeAreaView} from '../../../styles/common';
+import {SafeAreaView} from '../../../styles/styled';
 
 export default function Twitter({navigation}) {
   const {param} = useRoute().params;

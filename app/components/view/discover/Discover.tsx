@@ -4,7 +4,9 @@ import styled from '@emotion/native';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {TWITTER_BEARER_TOKEN} from '@env';
 
-import {App, Container as TwitterContainer, COLORS} from '../../../styles/common';
+import {App, HStack as TwitterContainer} from '../../../styles/styled';
+import {DIMENSION} from '../../../styles/common';
+
 import {artists, artistMetaData} from '../../../utils/artists';
 import {textReducer} from '../../../utils/functions';
 
@@ -115,15 +117,15 @@ export default function Discover({navigation}) {
 }
 
 const TwitterImage = styled.Image`
-  border-radius: 10px;
+  border-radius: ${DIMENSION.$small};
 `;
 
 const TwitterTextsContainer = styled.View`
   display: flex;
   flex: 1
   flex-direction: column;
-  padding-horizontal: 10px;
-  padding-vertical: 5px;
+  padding-horizontal: ${DIMENSION.$small};
+  padding-vertical: ${DIMENSION.$mini};
   justify-content: flex-start;
 `;
 

@@ -3,7 +3,7 @@ import {View, Text, FlatList} from 'react-native';
 import {useNavigation, useRoute, useIsFocused} from '@react-navigation/native';
 import styled from '@emotion/native';
 
-import {App, SafeAreaView, VerticalContainer, BoldText, RegularText} from '../../../styles/common';
+import {App, SafeAreaView, VStack, BoldText} from '../../../styles/styled';
 import Comments from '../../UI/Comments';
 
 import {API, graphqlOperation} from 'aws-amplify';
@@ -34,9 +34,9 @@ export default function FeedPage() {
 
   return (
     <SafeAreaView>
-      <VerticalContainer>
+      <VStack>
         <BoldText>{param.title}</BoldText>
-      </VerticalContainer>
+      </VStack>
       <CommentsContainer>
         <FlatList data={comments} renderItem={({item}) => <Comments content={item.content} />} />
       </CommentsContainer>

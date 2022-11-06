@@ -1,5 +1,5 @@
 import React from 'react';
-import {RegularText, VerticalContainer} from '../../styles/common';
+import {RegularText, VStack} from '../../styles/styled';
 
 type TComments = {
   content: string | ReactNode;
@@ -7,8 +7,8 @@ type TComments = {
 
 export default function Comments({content}: TComments) {
   return (
-    <VerticalContainer>
+    <VStack>
       <RegularText>{content}</RegularText>
-    </VerticalContainer>
+    </VStack>
   );
 }

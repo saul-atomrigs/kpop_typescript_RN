@@ -77,3 +77,8 @@ export const ThinText = styled.Text`
   font-size: ${FONTS.size.$small};
   font-weight: ${FONTS.weight.$bold};
 `;
+
+export const ButtonText = styled.Text`
+  color:  ${COLORS.background[200]};
+  fontWeight: ${FONTS.weight.$bold};,
+`;

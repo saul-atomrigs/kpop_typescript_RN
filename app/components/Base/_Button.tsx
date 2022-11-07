@@ -1,12 +1,18 @@
-import {StyleSheet, Text, Pressable} from 'react-native';
 import React from 'react';
+import {Pressable, Text} from 'react-native';
+import {ButtonText} from '../../styles/styled';
 
-export default function _Button({onPress, textStyle, text}) {
+type TButton = {
+  onPress: () => void;
+  textStyle: object | undefined;
+  text: string;
+};
+
+export default function _Button({onPress, textStyle, text}: TButton) {
   return (
     <Pressable onPress={onPress}>
-      <Text style={textStyle}>{text}</Text>
+      {/* <Text style={textStyle}>{text}</Text> */}
+      <ButtonText style={textStyle}>{text}</ButtonText>
     </Pressable>
   );
 }
-
-const styles = StyleSheet.create({});

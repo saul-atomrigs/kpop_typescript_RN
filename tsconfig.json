@@ -15,7 +15,20 @@
     "strict": true,
     "target": "esnext",
     /* Completeness */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin",
+        "lint": {
+          "validProperties": [
+            "padding-vertical",
+            "padding-horizontal",
+            "margin-vertical",
+            "margin-horizontal"
+          ]
+        }
+      }
+    ]
   },
   "exclude": [
     "node_modules",

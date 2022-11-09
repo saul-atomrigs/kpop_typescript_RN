@@ -79,6 +79,6 @@ export const ThinText = styled.Text`
 `;
 
 export const ButtonText = styled.Text`
-  color:  ${COLORS.background[200]};
-  fontWeight: ${FONTS.weight.$bold};,
+  color: ${COLORS.background[200]};
+  font-weight: ${FONTS.weight.$bold};
 `;

@@ -1,15 +1,23 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {COLORS} from '../../styles/common';
+import {BlackButton} from '../../styles/styled';
 import _Button from '../Base/_Button';
-import {BlackButtonContainer} from '../../styles/styled';
-import {commonStyles} from '../../styles/common';
 
-export default function RegularButton({text, onPress}) {
+type TRegularButton = {
+  text: string;
+  onPress: () => void;
+};
+
+export default function RegularButton({text, onPress}: TRegularButton) {
+  const buttonText = {
+    color: COLORS.background[200],
+    fontWeight: '800',
+    letterDIMENSION: 2,
+  };
+
   return (
-    <View style={commonStyles.blackButton}>
-      <_Button textStyle={commonStyles.buttonText} text={text} onPress={onPress} />
-    </View>
+    <BlackButton>
+      <_Button textStyle={buttonText} text={text} onPress={onPress} />
+    </BlackButton>
   );
 }
-
-const styles = StyleSheet.create({});

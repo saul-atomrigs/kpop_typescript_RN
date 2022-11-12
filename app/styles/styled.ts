@@ -54,6 +54,16 @@ export const BlackButtonContainer = styled.View`
  border-radius: ${DIMENSION.$mini};
 `;
 
+export const BlackButton = styled.View`
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: ${COLORS.background[1000]}
+  border-radius: 25,
+  width: 100%,
+  height: ${HEIGHT * 0.07}
+`;
+
 /**
  * TEXT STYLES:
  */

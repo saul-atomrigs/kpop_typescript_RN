@@ -5,7 +5,7 @@ module.exports = {
   singleQuote: true,
   trailingComma: 'all',
   endOfLine: 'auto',
-  printWidth: 200,
+  printWidth: 100,
   semi: true,
   editor: {
     formatOnSave: true,

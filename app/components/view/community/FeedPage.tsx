@@ -17,7 +17,9 @@ export default function FeedPage() {
 
   async function fetchComments() {
     try {
-      const commentData = await API.graphql(graphqlOperation(listComments, {filter: {postCommentsId: {eq: param.id}}}));
+      const commentData = await API.graphql(
+        graphqlOperation(listComments, {filter: {postCommentsId: {eq: param.id}}}),
+      );
       setComments(commentData.data.listComments.items);
     } catch (err) {
       console.log(err);

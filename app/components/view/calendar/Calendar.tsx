@@ -86,7 +86,7 @@ export default function Calendar({navigation}: NavigationPropTypes) {
    * @param property 
    * @returns 
    */
-  const groupByDate = (objectArray, property) => {
+  const groupByDate = (objectArray: [], property: string) => {
     return objectArray.reduce((acc, obj) => {
       const key = obj[property];
       const curGroup = acc[key] ?? [];

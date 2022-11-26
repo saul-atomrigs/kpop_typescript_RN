@@ -62,14 +62,15 @@ export default function Calendar({navigation}: NavigationPropTypes) {
    * @param props
    * @returns Each component in the Agenda
    */
-  const renderItem = (props: any) => {
+  const renderItem = (props: {artist?: string; event?: string; date?: Date; id?: string}) => {
+    const {artist, event, date, id} = props;
     return (
       <SafeAreaView style={commonStyles.app}>
         <TouchableOpacity style={styles.item} onPress={onPressItem}>
-          <Text style={styles.artist}>{props.artist}</Text>
+          <Text style={styles.artist}>{artist}</Text>
           <View style={styles.eventContainer}>
             <View>{props.icon}</View>
-            <Text style={styles.event}>{props.event}</Text>
+            <Text style={styles.event}>{event}</Text>
           </View>
           <View style={styles.stats}></View>
           <View style={styles.stats}>
@@ -136,7 +137,9 @@ export default function Calendar({navigation}: NavigationPropTypes) {
       />
 
       <View style={styles.floatingBtnContainer}>
-        <TouchableOpacity style={styles.floatingBtn} onPress={() => setOpenAddScheduleModal(!openAddScheduleModal)}>
+        <TouchableOpacity
+          style={styles.floatingBtn}
+          onPress={() => setOpenAddScheduleModal(!openAddScheduleModal)}>
           <Plus color="snow" weight="bold" />
         </TouchableOpacity>
       </View>
@@ -148,7 +151,10 @@ export default function Calendar({navigation}: NavigationPropTypes) {
         onRequestClose={() => {
           setOpenAddScheduleModal(!openAddScheduleModal);
         }}>
-        <AddSchedule openAddScheduleModal={openAddScheduleModal} setOpenAddScheduleModal={setOpenAddScheduleModal} />
+        <AddSchedule
+          openAddScheduleModal={openAddScheduleModal}
+          setOpenAddScheduleModal={setOpenAddScheduleModal}
+        />
       </Modal>
     </>
   );
